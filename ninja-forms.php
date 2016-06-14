@@ -24,7 +24,7 @@ if( version_compare( get_option( 'ninja_forms_version', '0.0.0' ), '3', '<' ) ||
     update_option( 'ninja_forms_load_deprecated', TRUE );
 }
 
-if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf2to3' ] ) && ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) ){
+if( apply_filters( 'ninja_forms_force_load_deprecated', false ) || ( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf2to3' ] ) && ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) ) ){
 
     include 'deprecated/ninja-forms.php';
 
